@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{9184B31B-F59C-4EB2-8C02-EB2CACDD2E7F}</ProjectGuid>
-    <RootNamespace>rionos_0619</RootNamespace>
+    <ProjectGuid>{F817BE27-2EEF-47AB-92E8-085C0630548C}</ProjectGuid>
+    <RootNamespace>seedengine</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -111,6 +111,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="base\graphics.h" />
+    <ClInclude Include="base\graphics\bill_board.h" />
+    <ClInclude Include="base\graphics\effect2d.h" />
+    <ClInclude Include="base\graphics\effect3d.h" />
+    <ClInclude Include="base\graphics\font2d.h" />
+    <ClInclude Include="base\graphics\font3d.h" />
+    <ClInclude Include="base\graphics\geometry2d.h" />
+    <ClInclude Include="base\graphics\geometry3d.h" />
+    <ClInclude Include="base\graphics\model.h" />
+    <ClInclude Include="base\graphics\sprite2d.h" />
+    <ClInclude Include="base\graphics\sprite3d.h" />
+    <ClInclude Include="base\window.h" />
+    <ClInclude Include="paths\model_path.h" />
+    <ClInclude Include="paths\texture_path.h" />
+    <ClInclude Include="utility\connected_pointer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\directx11\directx11.vcxproj">
+      <Project>{8db89df1-5356-45f2-aca1-5444a1a3ac37}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\simple-window\simple-window.vcxproj">
+      <Project>{00118147-b5e3-4b84-b33c-2c668c69e4a0}</Project>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

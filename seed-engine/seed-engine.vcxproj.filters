@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\utility">
+      <UniqueIdentifier>{583e891b-6709-4259-b234-af0637905b24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\base">
+      <UniqueIdentifier>{3a5263c5-2a40-4ebc-bbf0-17eabb17f6cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\base\graphics">
+      <UniqueIdentifier>{0bf0ffe8-2143-4988-acd7-9e0a766dc9ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\paths">
+      <UniqueIdentifier>{965df154-fc01-460c-b86e-d7aba65af67a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utility\connected_pointer.h">
+      <Filter>ヘッダー ファイル\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\model.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\sprite2d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\sprite3d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\bill_board.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\effect2d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\effect3d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\font2d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\font3d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\geometry2d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="base\graphics\geometry3d.h">
+      <Filter>ヘッダー ファイル\base\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="paths\model_path.h">
+      <Filter>ヘッダー ファイル\paths</Filter>
+    </ClInclude>
+    <ClInclude Include="paths\texture_path.h">
+      <Filter>ヘッダー ファイル\paths</Filter>
+    </ClInclude>
+    <ClInclude Include="base\window.h">
+      <Filter>ヘッダー ファイル\base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
