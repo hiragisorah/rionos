@@ -3,19 +3,18 @@
 template<class _Type> class ConnectedPointer
 {
 public:
-	ConnectedPointer(void)
-		: pointer_(new _Type)
+	template<class ... Args>
+	ConnectedPointer(Args ... args)
 	{
-		this->ppointer_ = &pointer_;
+		this->ppointer_ = new _Type*;
+		*this->ppointer_ = new _Type(args ...);
 	}
 	ConnectedPointer(unsigned int)
-		: pointer_(nullptr)
-		, ppointer_(nullptr)
+		: ppointer_(nullptr)
 	{
 	}
 	ConnectedPointer(const ConnectedPointer & connected_pointer)
-		: pointer_(nullptr)
-		, ppointer_(connected_pointer.ppointer_)
+		: ppointer_(connected_pointer.ppointer_)
 	{}
 	virtual ~ConnectedPointer(void)
 	{
@@ -23,7 +22,6 @@ public:
 	}
 
 private:
-	_Type * pointer_;
 	_Type ** ppointer_;
 
 public:
@@ -33,15 +31,18 @@ public:
 		if (!this->isExpired())
 		{
 			delete *this->ppointer_;
+			delete this->ppointer_;
 			*this->ppointer_ = nullptr;
 		}
 	}
 	template<class _NewType> void Reset(void)
 	{
-		this->pointer_ = new _NewType;
-		this->ppointer_ = &this->pointer_;
+		this->Release();
+		this->ppointer_ = new _Type*;
+		*this->ppointer_ = new _Type;
 	};
 
 public:
 	_Type * const operator->(void) { return *this->ppointer_; }
+	const _Type & operator*(void) { return **this->ppointer_; }
 };
