@@ -1,19 +1,9 @@
 #include "directx11.h"
 
 DirectX11::DirectX11(void)
-	: window_(nullptr)
+	: clear_color_(DirectX::XMVectorSet(.2f, .4f, .8f, 1.f))
 {
 	
-}
-
-Window * const DirectX11::get_window(void)
-{
-	return this->window_;
-}
-
-void DirectX11::set_window(Window * const window)
-{
-	this->window_ = window;
 }
 
 bool DirectX11::Initialize(void)
@@ -44,10 +34,15 @@ void DirectX11::Finalize(void)
 
 bool DirectX11::Begin(void)
 {
+	this->context_->ClearRenderTargetView(this->back_buffer_rtv_.Get(), (float*)&this->clear_color_);
+	this->context_->ClearDepthStencilView(this->dsv_.Get(), D3D11_CLEAR_DEPTH, 1.f, 0);
+
 	return true;
 }
 bool DirectX11::End(void)
 {
+	this->swap_chain_->Present(1, 0);
+
 	return true;
 }
 void DirectX11::Rendering(ConnectedPointer<BillBoard> & bill_board)

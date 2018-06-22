@@ -3,6 +3,7 @@
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <wrl\client.h>
+#include <DirectXMath.h>
 
 #pragma comment(lib, "d3dcompiler.lib")
 #pragma comment(lib, "d3d11.lib")
@@ -17,15 +18,6 @@ class DirectX11 : public Graphics
 {
 public:
 	DirectX11(void);
-
-	// get / set {
-public:
-	Window * const get_window(void);
-	void set_window(Window * const window);
-	// } get / set
-
-private:
-	Window * window_;
 
 	// override {
 public:
@@ -54,6 +46,7 @@ private:
 	ComPtr<ID3D11RenderTargetView> back_buffer_rtv_;
 	ComPtr<ID3D11DepthStencilView> dsv_;
 	D3D11_VIEWPORT viewport_;
+	DirectX::XMVECTOR clear_color_;
 
 private:
 	bool InitializeSwapChain(void);

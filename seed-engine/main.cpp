@@ -9,47 +9,17 @@ void main(void)
 #ifdef _DEBUG
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
-	ConnectedPointer<int> a(5);
-	ConnectedPointer<int> b(a);
 
-	a.Release();
-	
-	std::cout << "a: ";
-	if (a.isExpired())
-	{
-		std::cout << "Expired." << std::endl;
-	}
-	else
-	{
-		std::cout << *a << std::endl;
-	}
-	std::cout << "b: ";
-	if (b.isExpired())
-	{
-		std::cout << "Expired." << std::endl;
-	}
-	else
-	{
-		std::cout << *b << std::endl;
-	}
+	ConnectedPointer<Window> window(new SimpleWindow);
+	ConnectedPointer<Graphics> graphics(new DirectX11);
 
-	rewind(stdin);
-	getchar();
+	graphics->set_window(&window);
 
-	//ConnectedPointer<Window> window(0);
-	//window.Reset<SimpleWindow>();
-	//ConnectedPointer<Graphics> graphics(0);
-	//graphics.Reset<DirectX11>();
+	window->Initalize();
+	graphics->Initialize();
 
-	//int a = 10;
-	//int b = a;
-	//b = a;
+	while (window->Run() && graphics->Begin() && graphics->End());
 
-	//window->Initalize();
-	//graphics->Initialize();
-
-	//while (window->Run() && graphics->Begin() && graphics->End());
-
-	//graphics->Finalize();
-	//window->Finalize();
+	graphics->Finalize();
+	window->Finalize();
 }
