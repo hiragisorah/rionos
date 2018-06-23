@@ -1,8 +1,6 @@
-#include <vector>
-#include <iostream>
-
-#include "..\simple-window\simple-window.h"
-#include "..\directx11\directx11.h"
+#include "..\window\window.h"
+#include "..\graphics\graphics.h"
+#include "..\game\game.h"
 
 void main(void)
 {
@@ -10,16 +8,12 @@ void main(void)
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
-	ConnectedPointer<Window> window(new SimpleWindow);
-	ConnectedPointer<Graphics> graphics(new DirectX11);
+	Window window; Graphics graphics; Game game;
+	
+	graphics.set_window(&window);
 
-	graphics->set_window(&window);
+	if (window.Initalize() && graphics.Initialize() && game.Initalize())
+		while (window.Run() && graphics.Begin() && game.Run() && graphics.End());
 
-	window->Initalize();
-	graphics->Initialize();
-
-	while (window->Run() && graphics->Begin() && graphics->End());
-
-	graphics->Finalize();
-	window->Finalize();
+	game.Finalize(); graphics.Finalize(); window.Finalize();
 }

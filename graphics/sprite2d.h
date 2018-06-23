@@ -1,6 +1,6 @@
 #pragma once
 
-class Sprite2D
+class GRAPHICSDLL_API Sprite2D
 {
 public:
 	enum class CENTER_POSITION

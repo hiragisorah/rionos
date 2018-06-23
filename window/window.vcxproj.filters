@@ -7,33 +7,21 @@
     </Filter>
     <Filter Include="ヘッダー ファイル">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
     <Filter Include="リソース ファイル">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル\utility">
-      <UniqueIdentifier>{583e891b-6709-4259-b234-af0637905b24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\paths">
-      <UniqueIdentifier>{965df154-fc01-460c-b86e-d7aba65af67a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClInclude Include="window.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="window.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="utility\connected_pointer.h">
-      <Filter>ヘッダー ファイル\utility</Filter>
-    </ClInclude>
-    <ClInclude Include="paths\model_path.h">
-      <Filter>ヘッダー ファイル\paths</Filter>
-    </ClInclude>
-    <ClInclude Include="paths\texture_path.h">
-      <Filter>ヘッダー ファイル\paths</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
