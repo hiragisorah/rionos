@@ -25,14 +25,7 @@
 
 #include "..\seed-engine\utility\connected_pointer.h"
 
-#include "bill_board.h"
-#include "font2d.h"
-#include "font3d.h"
-#include "geometry2d.h"
-#include "geometry3d.h"
-#include "model.h"
-#include "sprite2d.h"
-#include "sprite3d.h"
+#include "resource_manager.h"
 
 using namespace Microsoft::WRL;
 

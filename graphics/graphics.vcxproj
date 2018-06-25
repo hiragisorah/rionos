@@ -126,6 +126,7 @@
     <ClInclude Include="geometry3d.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="resource_manager.h" />
     <ClInclude Include="sprite2d.h" />
     <ClInclude Include="sprite3d.h" />
   </ItemGroup>
