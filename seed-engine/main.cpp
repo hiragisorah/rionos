@@ -15,7 +15,7 @@ int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	graphics.set_window(&window);
 	
 	if (window.Initalize() && graphics.Initialize() && game.Initalize())
-		while (window.Run() && graphics.Begin() && game.Run() && graphics.End());
+		while (game.Run() && window.Run() && graphics.Begin() && graphics.Render() && graphics.End());
 
 	game.Finalize(); graphics.Finalize(); window.Finalize();
 } 

@@ -25,7 +25,16 @@
 
 #include "..\seed-engine\utility\connected_pointer.h"
 
-#include "resource_manager.h"
+#include "bill_board.h"
+#include "effect2d.h"
+#include "effect3d.h"
+#include "font2d.h"
+#include "font3d.h"
+#include "geometry2d.h"
+#include "geometry3d.h"
+#include "model.h"
+#include "sprite2d.h"
+#include "sprite3d.h"
 
 using namespace Microsoft::WRL;
 
@@ -35,10 +44,11 @@ public:
 	Graphics(void);
 
 public:
-	virtual bool Initialize(void);
-	virtual void Finalize(void);
-	virtual bool Begin(void);
-	virtual bool End(void);
+	bool Initialize(void);
+	void Finalize(void);
+	bool Begin(void);
+	bool Render(void);
+	bool End(void);
 
 protected:
 	std::vector<ConnectedPointer<BillBoard>> bill_board_list_;
@@ -96,4 +106,75 @@ private:
 	bool InitializeBackBuffer(void);
 	bool InitializeDepthStencilView(void);
 	bool InitializeViewPort(void);
+
+private:
+	template<class _Type> void RenderingList(std::vector<_Type> list)
+	{
+		for (unsigned int n = 0; n < list.size();)
+		{
+			auto & pointer = list[n];
+			if (pointer.isExpired())
+			{
+				list.erase(list.begin() + n);
+			}
+			else
+			{
+				this->Rendering(pointer);
+				++n;
+			}
+		}
+	}
+
+private:
+	struct MeshBuffer
+	{
+		ComPtr<ID3D11Buffer> vertex_buffer_;
+		ComPtr<ID3D11Buffer> index_buffer_;
+		unsigned int indices_cnt_;
+		unsigned int vertex_size_;
+		D3D11_PRIMITIVE_TOPOLOGY topology_;
+	};
+
+private:
+	std::unordered_map<Geometry2D::TYPE, MeshBuffer> geometry_2d_type_list_;
+
+private:
+	bool InitGeometry2DTypeTriangle(void);
+	
+private:
+	void DrawIndexed(const MeshBuffer & mesh);
+
+private:
+	template<class _Vertex> const bool CreateVertexBuffer(ComPtr<ID3D11Buffer> & buffer, unsigned int & size, std::vector<_Vertex> & vertices)
+	{
+		size = sizeof(_Vertex);
+
+		D3D11_BUFFER_DESC bd = {};
+		bd.ByteWidth = vertices.size() * size;
+		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bd.Usage = D3D11_USAGE_DEFAULT;
+
+		D3D11_SUBRESOURCE_DATA sd = {};
+		sd.pSysMem = vertices.data();
+
+		auto hr = this->device_->CreateBuffer(&bd, &sd, buffer.GetAddressOf());
+
+		return SUCCEEDED(hr);
+	}
+	template<class _Index> const bool CreateIndexBuffer(ComPtr<ID3D11Buffer> & buffer, unsigned int & cnt, std::vector<_Index> & indices)
+	{
+		cnt = indices.size();
+
+		D3D11_BUFFER_DESC bd = {};
+		bd.ByteWidth = cnt * sizeof(_Index);
+		bd.BindFlags = D3D11_BIND_INDEX_BUFFER;
+		bd.Usage = D3D11_USAGE_DEFAULT;
+
+		D3D11_SUBRESOURCE_DATA sd = {};
+		sd.pSysMem = indices.data();
+
+		auto hr = this->device_->CreateBuffer(&bd, &sd, buffer.GetAddressOf());
+
+		return SUCCEEDED(hr);
+	}
 };
